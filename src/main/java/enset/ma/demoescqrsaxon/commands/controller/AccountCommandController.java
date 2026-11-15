@@ -3,10 +3,7 @@ package enset.ma.demoescqrsaxon.commands.controller;
 import enset.ma.demoescqrsaxon.commands.command.AddAcountCommand;
 import enset.ma.demoescqrsaxon.commands.dtos.AddNewAccountRequestDTO;
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -28,5 +25,9 @@ public class AccountCommandController {
                 request.currency()
         ));
         return response;
+    }
+    @ExceptionHandler(Exception.class)
+    public String exceptionHandler(Exception e){
+        return e.getMessage();
     }
 }
