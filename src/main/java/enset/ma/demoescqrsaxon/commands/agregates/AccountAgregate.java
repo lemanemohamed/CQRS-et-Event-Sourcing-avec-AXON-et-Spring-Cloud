@@ -6,12 +6,14 @@ import enset.ma.demoescqrsaxon.events.AccountCreatedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
+import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 
 @Aggregate
 @Slf4j
 public class AccountAgregate {
+    @AggregateIdentifier
     private String accountId;
     private double balance;
     private AccountStatus accountStatus;
